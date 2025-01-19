@@ -1,0 +1,36 @@
+{
+  "name": "plutus-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "npx prisma generate",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon -q dist/index.js\"",
+    "prepare": "husky",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:generate": "prisma generate",
+    "format": "prettier --write .",
+    "check-prod": "pnpm run prisma:generate && pnpm run format && pnpm run build"
+  },
+  "author": "TechWizardLabs",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.7",
+    "concurrently": "^9.1.2",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
+    "prisma": "^6.2.1",
+    "typescript": "^5.7.3"
+  }
+}

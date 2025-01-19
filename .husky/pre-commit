@@ -1,0 +1,16 @@
+# Ensure pnpm is installed
+if ! command -v pnpm >/dev/null 2>&1; then
+    echo "❌ Error: 'pnpm' is not installed or not available in the PATH."
+    echo "Please install pnpm and try again."
+    exit 1
+fi
+
+# Run linting and formatting commands
+echo "🔍 Running format and lint fixes on staged files..."
+pnpm run check-prod
+
+# Stage all changes after fixing
+echo "🔄 Staging updated files..."
+git add .
+
+echo "✅ Pre-commit checks passed!"
